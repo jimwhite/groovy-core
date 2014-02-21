@@ -178,15 +178,19 @@ class BaseScriptTransformTest extends CompilableTestSupport {
     }
 
     void testBaseScriptCanImplementRunMethodWithArgs() {
-        assertScript '''
+        def answer = new GroovyShell().evaluate('''
             abstract class  Foo extends Script {
-               def run() {run(null)}
+               def run() {
+                  2 * run(null)
+               }
               abstract run(Object x)
             }
 
             @groovy.transform.BaseScript Foo foo
-            println "hello world"
-        '''
+            21
+        ''')
+
+        assert answer == 42
     }
 
     void testScriptCanOverrideRun() {
