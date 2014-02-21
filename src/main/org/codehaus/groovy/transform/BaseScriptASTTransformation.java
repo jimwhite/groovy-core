@@ -143,10 +143,7 @@ public class BaseScriptASTTransformation extends AbstractASTTransformation {
     }
 
     private boolean isSuitableAbstractMethod(MethodNode node) {
-        return node != null
-                && !(node.getDeclaringClass().equals(ClassHelper.SCRIPT_TYPE)
-                && "run".equals(node.getName())
-                && node.getParameters().length == 0);
+        return node != null && (!"run".equals(node.getName()) || node.getParameters().length != 0);
     }
 
     public SourceUnit getSourceUnit() {
