@@ -14,6 +14,7 @@ user.gradle
 /.settings
 *.classpath
 *.project
+.DS_Store
 
 /subprojects/groovy-ant/bin
 /subprojects/groovy-ant/.project
@@ -23,6 +24,10 @@ user.gradle
 /subprojects/groovy-bsf/.project
 /subprojects/groovy-bsf/.settings
 /subprojects/groovy-bsf/.classpath
+/subprojects/groovy-cli/bin
+/subprojects/groovy-cli/.project
+/subprojects/groovy-cli/.settings
+/subprojects/groovy-cli/.classpath
 /subprojects/groovy-console/bin
 /subprojects/groovy-console/.project
 /subprojects/groovy-console/.settings

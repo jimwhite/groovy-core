@@ -15,7 +15,7 @@
  */
 package groovy.lang;
 
-import groovy.ui.GroovyMain;
+//import groovy.ui.GroovyMain;
 import groovy.security.GroovyCodeSourcePermission;
 
 import org.codehaus.groovy.control.CompilationFailedException;
@@ -27,6 +27,7 @@ import org.codehaus.groovy.runtime.InvokerInvocationException;
 import java.io.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URI;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
@@ -52,8 +53,10 @@ public class GroovyShell extends GroovyObjectSupport {
     private CompilerConfiguration config;
     private GroovyClassLoader loader;
 
-    public static void main(String[] args) {
-        GroovyMain.main(args);
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Class groovyMain = Class.forName("groovy.ui.GroovyMain");
+        Method mainMethod = groovyMain.getMethod("main", String[].class);
+        mainMethod.invoke(null, (Object) args);
     }
 
     public GroovyShell() {

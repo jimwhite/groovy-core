@@ -1,5 +1,6 @@
 dependencies {
     compile project(':')
+    compile project(':groovy-cli')
     testCompile project(':').sourceSets.test.runtimeClasspath
     groovy project(':')
     compile project(':groovy-templates')
