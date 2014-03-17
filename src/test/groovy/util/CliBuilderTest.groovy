@@ -175,7 +175,7 @@ class CliBuilderTest extends GroovyTestCase {
         cli.x(required: true, 'message')
         cli.parse([])
         //
-        // NB: This test is very fragile and is bound to fail on different locales and versions of commons-cli... :-(
+        // NB: This test is very fragile and is bound to fail on different locales and versions of commons-org.apache.commons.cli... :-(
         //
         assert stringWriter.toString().normalize() == '''error: Missing required option: x
 usage: groovy
@@ -282,7 +282,7 @@ usage: groovy
 
     private void multipleOccurrencesSeparateJuxtaposed(parser) {
         def cli = new CliBuilder(parser: parser)
-        //cli.a ( longOpt : 'arg' , args : Option.UNLIMITED_VALUES , 'arguments' )
+        //org.apache.commons.cli.a ( longOpt : 'arg' , args : Option.UNLIMITED_VALUES , 'arguments' )
         cli.a(longOpt: 'arg', args: 1, 'arguments')
         def options = cli.parse(['-a1', '-a2', '-a3'])
         assertEquals('1', options.a)

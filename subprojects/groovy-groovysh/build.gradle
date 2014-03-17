@@ -1,6 +1,7 @@
 dependencies {
     compile project(':')
     groovy project(':')
+    compile project(':groovy-cli')
     compile project(':groovy-console')
     testCompile project(':groovy-test')
     compile("jline:jline:$jlineVersion") {

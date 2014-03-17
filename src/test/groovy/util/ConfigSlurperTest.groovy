@@ -571,11 +571,11 @@ log4j {
 
     void testVariableAssignments() {
         def conf = '''
-          griffon.cli.verbose = true
+          griffon.org.apache.commons.cli.verbose = true
           griffon.rt.verbose = true
           projects {
               custom {
-                  this."griffon.cli.verbose" = false
+                  this."griffon.org.apache.commons.cli.verbose" = false
                   griffon{rt{verbose = false}}
               }
           }
@@ -590,13 +590,13 @@ log4j {
 
     void testCustomConditionalBlocks() {
         def conf = '''
-          griffon.cli.verbose = true
+          griffon.org.apache.commons.cli.verbose = true
           projects {
               custom {
-                  //griffon{cli{verbose = false}}  // OK
-                  //this."griffon.cli.verbose" = false  // fails
+                  //griffon{org.apache.commons.cli{verbose = false}}  // OK
+                  //this."griffon.org.apache.commons.cli.verbose" = false  // fails
                   griffon {
-                      cli.verbose = false
+                      org.apache.commons.cli.verbose = false
                   }
               }
           }

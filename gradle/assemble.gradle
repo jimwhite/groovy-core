@@ -28,14 +28,14 @@ ext.allManifest = manifest {
 
 ext.licenseSpec = copySpec {
     from 'config/build'
-    from(zipTree(configurations.compile.fileCollection { it.name.startsWith 'commons-cli' }.singleFile).matching {
-        include 'META-INF/LICENSE.txt'
-    }) {
-        eachFile { details ->
-            details.path = details.path - 'META-INF'
-            details.name = 'CLI-LICENSE.txt'
-        }
-    }
+//    from(zipTree(project(':groovy-org.apache.commons.cli').configurations.compile.fileCollection { it.name.startsWith 'commons-org.apache.commons.cli' }.singleFile).matching {
+//        include 'META-INF/LICENSE.txt'
+//    }) {
+//        eachFile { details ->
+//            details.path = details.path - 'META-INF'
+//            details.name = 'CLI-LICENSE.txt'
+//        }
+//    }
 }
 
 ext.srcSpec = copySpec {
@@ -207,7 +207,7 @@ task jarAll(type: Jar, dependsOn: { modules()*.jar }) {
                 zipfileset(dir: "$owner.ext.metaInfDir", prefix: 'META-INF', excludes: 'META-INF')
                 zipfileset(
                         src: jar.archivePath,
-                        excludes: 'org/codehaus/groovy/cli/GroovyPosixParser*.class,groovy/util/CliBuilder*.class,groovy/util/OptionAccessor*.class')
+                        excludes: 'org/codehaus/groovy/org.apache.commons.cli/GroovyPosixParser*.class,groovy/util/CliBuilder*.class,groovy/util/OptionAccessor*.class')
                 moduleJars().each {
                     // HelpFormatter only found in groovy-groovysh but no harm for other modules
                     zipfileset(
@@ -215,7 +215,7 @@ task jarAll(type: Jar, dependsOn: { modules()*.jar }) {
                         excludes: '**/org.codehaus.groovy.runtime.ExtensionModule,org/codehaus/groovy/tools/shell/util/HelpFormatter*.class')
                 }
                 configurations.runtime.files.findAll { file ->
-                    ['antlr', 'asm', 'commons-cli'].any { file.name.startsWith(it) } && ['asm-attr', 'asm-util', 'asm-analysis'].every { !file.name.startsWith(it) }
+                    ['antlr', 'asm', 'commons-org.apache.commons.cli'].any { file.name.startsWith(it) } && ['asm-attr', 'asm-util', 'asm-analysis'].every { !file.name.startsWith(it) }
                 }.each { jarjarFile ->
                     zipfileset(src: jarjarFile)
                 }
@@ -223,7 +223,7 @@ task jarAll(type: Jar, dependsOn: { modules()*.jar }) {
                     includes: 'org/objectweb/asm/util/AbstractVisitor.class,org/objectweb/asm/util/Trace*')
                 rule pattern: 'antlr.**', result: 'groovyjarjarantlr.@1'
                 rule pattern: 'org.objectweb.**', result: 'groovyjarjarasm.@1'
-                rule pattern: 'org.apache.commons.cli.**', result: 'groovyjarjarcommonscli.@1'
+                rule pattern: 'org.apache.commons.org.apache.commons.cli.**', result: 'groovyjarjarcommonscli.@1'
             }
         }
 
@@ -241,7 +241,7 @@ task jarAll(type: Jar, dependsOn: { modules()*.jar }) {
             jar(destfile: archivePath, update:true, manifest: manifestPath) {
                 zipfileset(
                         src: jar.archivePath,
-                        includes: 'org/codehaus/groovy/cli/GroovyPosixParser*.class,groovy/util/CliBuilder*.class,groovy/util/OptionAccessor*.class')
+                        includes: 'org/codehaus/groovy/org.apache.commons.cli/GroovyPosixParser*.class,groovy/util/CliBuilder*.class,groovy/util/OptionAccessor*.class')
                 moduleJars().each {
                     // HelpFormatter only found in groovy-groovysh but have left all modules here to allow future expansion
                     zipfileset(src: it, includes: 'org/codehaus/groovy/tools/shell/util/HelpFormatter*.class')

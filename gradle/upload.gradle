@@ -124,7 +124,7 @@ ext.pomAll = {
     allpom.whenConfigured { p ->
         p.dependencies.removeAll(p.dependencies.findAll {
             it.groupId == 'org.codehaus.groovy' ||
-                    (['asm', 'asm-util', 'asm-analysis', 'asm-tree', 'asm-commons', 'antlr', 'commons-cli'].contains(it.artifactId))
+                    (['asm', 'asm-util', 'asm-analysis', 'asm-tree', 'asm-commons', 'antlr', 'commons-org.apache.commons.cli'].contains(it.artifactId))
         })
     }
 

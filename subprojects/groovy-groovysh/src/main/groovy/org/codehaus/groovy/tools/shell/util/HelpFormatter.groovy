@@ -21,7 +21,7 @@ import org.apache.commons.cli.Option
 import org.apache.commons.cli.Options
 
 //
-// NOTE: Some code duplicated and augmented from commons-cli (1.0) sources to
+// NOTE: Some code duplicated and augmented from commons-org.apache.commons.cli (1.0) sources to
 //       properly render options w/arguments.
 //
 

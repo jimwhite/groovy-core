@@ -114,7 +114,7 @@ public class FileSystemCompiler {
     public static void commandLineCompile(String[] args, boolean lookupUnnamedFiles) throws Exception {
         Options options = createCompilationOptions();
 
-        CommandLineParser cliParser = new GroovyInternalPosixParser();
+        CommandLineParser cliParser = new org.apache.commons.cli.GroovyInternalPosixParser();
 
         CommandLine cli;
         cli = cliParser.parse(options, args);

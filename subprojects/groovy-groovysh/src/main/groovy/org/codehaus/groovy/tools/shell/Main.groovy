@@ -47,13 +47,13 @@ class Main
 
         CliBuilder cli = new CliBuilder(usage : 'groovysh [options] [...]', formatter: new HelpFormatter(), writer: io.out)
 
-        cli.classpath(messages['cli.option.classpath.description'])
-        cli.cp(longOpt: 'classpath', messages['cli.option.cp.description'])
-        cli.h(longOpt: 'help', messages['cli.option.help.description'])
-        cli.V(longOpt: 'version', messages['cli.option.version.description'])
-        cli.v(longOpt: 'verbose', messages['cli.option.verbose.description'])
-        cli.q(longOpt: 'quiet', messages['cli.option.quiet.description'])
-        cli.d(longOpt: 'debug', messages['cli.option.debug.description'])
+        cli.classpath(messages['org.apache.commons.cli.option.classpath.description'])
+        cli.cp(longOpt: 'classpath', messages['org.apache.commons.cli.option.cp.description'])
+        cli.h(longOpt: 'help', messages['org.apache.commons.cli.option.help.description'])
+        cli.V(longOpt: 'version', messages['org.apache.commons.cli.option.version.description'])
+        cli.v(longOpt: 'verbose', messages['org.apache.commons.cli.option.verbose.description'])
+        cli.q(longOpt: 'quiet', messages['org.apache.commons.cli.option.quiet.description'])
+        cli.d(longOpt: 'debug', messages['org.apache.commons.cli.option.debug.description'])
         cli.C(longOpt: 'color', args: 1, argName: 'FLAG', optionalArg: true, messages['cli.option.color.description'])
         cli.D(longOpt: 'define', args: 1, argName: 'NAME=VALUE', messages['cli.option.define.description'])
         cli.T(longOpt: 'terminal', args: 1, argName: 'TYPE', messages['cli.option.terminal.description'])
@@ -66,7 +66,7 @@ class Main
         }
 
         if (options.V) {
-            io.out.println(messages.format('cli.info.version', GroovySystem.version))
+            io.out.println(messages.format('org.apache.commons.cli.info.version', GroovySystem.version))
             System.exit(0)
         }
 

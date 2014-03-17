@@ -189,7 +189,6 @@ ext {
     bndVersion = '0.0.401'
     checkstyleVersion = '4.4'
     coberturaVersion = '1.9.4.1'
-    commonsCliVersion = '1.2'
     commonsHttpClientVersion = '3.1'
     eclipseOsgiVersion = '3.5.0.v20090520'
     gparsVersion = '1.1.0'
@@ -218,7 +217,6 @@ dependencies {
     compilerCompile "org.ow2.asm:asm-tree:$asmVersion"
     compilerCompile "org.ow2.asm:asm-util:$asmVersion"
 
-    compilerCompile "commons-cli:commons-cli:$commonsCliVersion"
     compilerCompile "org.apache.ant:ant:$antVersion"
     compilerCompile("com.thoughtworks.xstream:xstream:$xstreamVersion") {
         exclude(group: 'xpp3', module: 'xpp3_min')
@@ -239,7 +237,6 @@ dependencies {
     groovy "org.ow2.asm:asm-tree:$asmVersion"
     groovy "org.ow2.asm:asm-util:$asmVersion"
 
-    compile "commons-cli:commons-cli:$commonsCliVersion"
     compile("com.thoughtworks.xstream:xstream:$xstreamVersion") {
         exclude(group: 'xpp3', module: 'xpp3_min')
         exclude(group: 'junit', module: 'junit')

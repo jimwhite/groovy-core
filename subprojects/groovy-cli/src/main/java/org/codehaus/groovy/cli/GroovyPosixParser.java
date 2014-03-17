@@ -1,12 +1,11 @@
-/**
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+/*
+ * Copyright 2003-2013 the original author or authors.
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,7 +14,11 @@
  * limitations under the License.
  */
 
-package org.apache.commons.cli;
+package org.codehaus.groovy.cli;
+
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.Parser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,15 +27,15 @@ import java.util.List;
 
 /**
  * DO NOT USE. Hacked version until Commons CLI 1.3 is released.
- * NOTE: this is a mirror copy of org.codehaus.groovy.cli.GroovyPosixParser
+ * NOTE: this is a mirror copy of GroovyInternalPosixParser
  * DON'T MAKE CHANGES without keeping the other file in sync!
  * The class GroovyPosixParser provides an implementation of the
- * {@link Parser#flatten(Options,String[],boolean) flatten} method.
+ * {@link org.apache.commons.cli.Parser#flatten(org.apache.commons.cli.Options,String[],boolean) flatten} method.
  *
  * @author John Keyes (john at integralsource.com)
  * @author Paul King (Groovy hacks/fixes)
  */
-public class GroovyInternalPosixParser extends Parser
+public class GroovyPosixParser extends Parser
 {
     /** holder for flattened tokens */
     private List tokens = new ArrayList();
@@ -82,7 +85,7 @@ public class GroovyInternalPosixParser extends Parser
      *  characters in length and the first character is "<b>-</b>" then
      *  we need to burst the entry to determine its constituents.  For more
      *  information on the bursting algorithm see
-     *  {@link GroovyInternalPosixParser#burstToken(String, boolean) burstToken}.</li>
+     *  {@link GroovyPosixParser#burstToken(String, boolean) burstToken}.</li>
      *  <li>if the current <code>arguments</code> entry is not handled
      *  by any of the previous rules, then the entry is added to the list
      *  of processed tokens.</li>
@@ -192,16 +195,17 @@ public class GroovyInternalPosixParser extends Parser
     }
 
     /**
-     * If an {@link Option} exists for <code>token</code> then add the token to the processed list.
+     * If an {@link Option} exists for <code>token</code> then
+     * add the token to the processed list.
      * <p>
      * If an {@link Option} does not exist and <code>stopAtNonOption</code>
-     * is set then add the remaining tokens to the processed tokens list directly.
+     * is set then add the remaining tokens to the processed tokens list
+     * directly.
      *
      * @param token The current option token
      * @param stopAtNonOption Specifies whether flattening should halt at the first non option.
      */
-    private void processOptionToken(String token, boolean stopAtNonOption)
-    {
+    private void processOptionToken(String token, boolean stopAtNonOption) {
         if (stopAtNonOption && !options.hasOption(token))
         {
             eatTheRest = true;
@@ -242,7 +246,8 @@ public class GroovyInternalPosixParser extends Parser
      * @param stopAtNonOption Specifies whether to stop processing
      * at the first non-Option encountered.
      */
-    protected void burstToken(String token, boolean stopAtNonOption) {
+    protected void burstToken(String token, boolean stopAtNonOption)
+    {
         for (int i = 1; i < token.length(); i++)
         {
             String ch = String.valueOf(token.charAt(i));

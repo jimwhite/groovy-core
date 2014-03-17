@@ -56,32 +56,32 @@ class Main {
 
         def cli = new CliBuilder(usage : 'groovydoc [options] [packagenames] [sourcefiles]', writer: io.out, posix:false)
 
-        cli.help(longOpt: 'help', messages['cli.option.help.description'])
-        cli._(longOpt: 'version', messages['cli.option.version.description'])
-        cli.verbose(messages['cli.option.verbose.description'])
-        cli.quiet(messages['cli.option.quiet.description'])
+        cli.help(longOpt: 'help', messages['org.apache.commons.cli.option.help.description'])
+        cli._(longOpt: 'version', messages['org.apache.commons.cli.option.version.description'])
+        cli.verbose(messages['org.apache.commons.cli.option.verbose.description'])
+        cli.quiet(messages['org.apache.commons.cli.option.quiet.description'])
         // TODO is debug needed?
-        cli._(longOpt: 'debug', messages['cli.option.debug.description'])
-        cli.classpath(messages['cli.option.classpath.description'])
-        cli.cp(longOpt: 'classpath', messages['cli.option.cp.description'])
-        cli.d(longOpt: 'destdir', args:1, argName: 'dir', messages['cli.option.destdir.description'])
-        cli.author(messages['cli.option.author.description'])
-        cli.noscripts(messages['cli.option.noscripts.description'])
-        cli.nomainforscripts(messages['cli.option.nomainforscripts.description'])
-        cli.overview(args:1, argName: 'file', messages['cli.option.overview.description'])
-        cli.public(messages['cli.option.public.description'])
-        cli.protected(messages['cli.option.protected.description'])
-        cli.package(messages['cli.option.package.description'])
-        cli.private(messages['cli.option.private.description'])
-        cli.charset(args:1, argName: 'charset', messages['cli.option.charset.description'])
-        cli.fileEncoding(args:1, argName: 'charset', messages['cli.option.fileEncoding.description'])
-        cli.windowtitle(args:1, argName: 'text', messages['cli.option.windowtitle.description'])
-        cli.doctitle(args:1, argName: 'html', messages['cli.option.doctitle.description'])
-        cli.header(args:1, argName: 'html', messages['cli.option.header.description'])
-        cli.footer(args:1, argName: 'html', messages['cli.option.footer.description'])
-        cli.exclude(args:1, argName: 'pkglist', messages['cli.option.exclude.description'])
-        cli.stylesheetfile(args:1, argName: 'path', messages['cli.option.stylesheetfile.description'])
-        cli.sourcepath(args:1, argName: 'pathlist', messages['cli.option.sourcepath.description'])
+        cli._(longOpt: 'debug', messages['org.apache.commons.cli.option.debug.description'])
+        cli.classpath(messages['org.apache.commons.cli.option.classpath.description'])
+        cli.cp(longOpt: 'classpath', messages['org.apache.commons.cli.option.cp.description'])
+        cli.d(longOpt: 'destdir', args:1, argName: 'dir', messages['org.apache.commons.cli.option.destdir.description'])
+        cli.author(messages['org.apache.commons.cli.option.author.description'])
+        cli.noscripts(messages['org.apache.commons.cli.option.noscripts.description'])
+        cli.nomainforscripts(messages['org.apache.commons.cli.option.nomainforscripts.description'])
+        cli.overview(args:1, argName: 'file', messages['org.apache.commons.cli.option.overview.description'])
+        cli.public(messages['org.apache.commons.cli.option.public.description'])
+        cli.protected(messages['org.apache.commons.cli.option.protected.description'])
+        cli.package(messages['org.apache.commons.cli.option.package.description'])
+        cli.private(messages['org.apache.commons.cli.option.private.description'])
+        cli.charset(args:1, argName: 'charset', messages['org.apache.commons.cli.option.charset.description'])
+        cli.fileEncoding(args:1, argName: 'charset', messages['org.apache.commons.cli.option.fileEncoding.description'])
+        cli.windowtitle(args:1, argName: 'text', messages['org.apache.commons.cli.option.windowtitle.description'])
+        cli.doctitle(args:1, argName: 'html', messages['org.apache.commons.cli.option.doctitle.description'])
+        cli.header(args:1, argName: 'html', messages['org.apache.commons.cli.option.header.description'])
+        cli.footer(args:1, argName: 'html', messages['org.apache.commons.cli.option.footer.description'])
+        cli.exclude(args:1, argName: 'pkglist', messages['org.apache.commons.cli.option.exclude.description'])
+        cli.stylesheetfile(args:1, argName: 'path', messages['org.apache.commons.cli.option.stylesheetfile.description'])
+        cli.sourcepath(args:1, argName: 'pathlist', messages['org.apache.commons.cli.option.sourcepath.description'])
 
         def options = cli.parse(args)
 
@@ -91,7 +91,7 @@ class Main {
         }
 
         if (options.version) {
-            io.out.println(messages.format('cli.info.version', GroovySystem.version))
+            io.out.println(messages.format('org.apache.commons.cli.info.version', GroovySystem.version))
             return
         }
 

@@ -25,16 +25,16 @@ import org.codehaus.groovy.runtime.InvokerHelper
  * <p>
  * Typical usage (emulate partial arg processing of unix command: ls -alt *.groovy):
  * <pre>
- * def cli = new CliBuilder(usage:'ls')
- * cli.a('display all files')
- * cli.l('use a long listing format')
- * cli.t('sort by modification time')
- * def options = cli.parse(args)
+ * def org.apache.commons.cli = new CliBuilder(usage:'ls')
+ * org.apache.commons.cli.a('display all files')
+ * org.apache.commons.cli.l('use a long listing format')
+ * org.apache.commons.cli.t('sort by modification time')
+ * def options = org.apache.commons.cli.parse(args)
  * assert options // would be null (false) on failure
  * assert options.arguments() == ['*.groovy']
  * assert options.a && options.l && options.t
  * </pre>
- * The usage message for this example (obtained using <code>cli.usage()</code>) is shown below:
+ * The usage message for this example (obtained using <code>org.apache.commons.cli.usage()</code>) is shown below:
  * <pre>
  * usage: ls
  *  -a   display all files
@@ -52,13 +52,13 @@ import org.codehaus.groovy.runtime.InvokerHelper
  * <p>
  * Another example (partial emulation of arg processing for 'ant' command line):
  * <pre>
- * def cli = new CliBuilder(usage:'ant [options] [targets]',
+ * def org.apache.commons.cli = new CliBuilder(usage:'ant [options] [targets]',
  *                          header:'Options:')
- * cli.help('print this message')
- * cli.logfile(args:1, argName:'file', 'use given file for log')
- * cli.D(args:2, valueSeparator:'=', argName:'property=value',
+ * org.apache.commons.cli.help('print this message')
+ * org.apache.commons.cli.logfile(args:1, argName:'file', 'use given file for log')
+ * org.apache.commons.cli.D(args:2, valueSeparator:'=', argName:'property=value',
  *       'use value for given property')
- * def options = cli.parse(args)
+ * def options = org.apache.commons.cli.parse(args)
  * ...
  * </pre>
  * Usage message would be:
@@ -84,12 +84,12 @@ import org.codehaus.groovy.runtime.InvokerHelper
  * <p>
  * Another example showing long options (partial emulation of arg processing for 'curl' command line):
  * <pre>
- * def cli = new CliBuilder(usage:'curl [options] &lt;url&gt;')
- * cli._(longOpt:'basic', 'Use HTTP Basic Authentication')
- * cli.d(longOpt:'data', args:1, argName:'data', 'HTTP POST data')
- * cli.G(longOpt:'get', 'Send the -d data with a HTTP GET')
- * cli.q('If used as the first parameter disables .curlrc')
- * cli._(longOpt:'url', args:1, argName:'URL', 'Set URL to work with')
+ * def org.apache.commons.cli = new CliBuilder(usage:'curl [options] &lt;url&gt;')
+ * org.apache.commons.cli._(longOpt:'basic', 'Use HTTP Basic Authentication')
+ * org.apache.commons.cli.d(longOpt:'data', args:1, argName:'data', 'HTTP POST data')
+ * org.apache.commons.cli.G(longOpt:'get', 'Send the -d data with a HTTP GET')
+ * org.apache.commons.cli.q('If used as the first parameter disables .curlrc')
+ * org.apache.commons.cli._(longOpt:'url', args:1, argName:'URL', 'Set URL to work with')
  * </pre>
  * Which has the following usage message:
  * <pre>
@@ -119,10 +119,10 @@ import org.codehaus.groovy.runtime.InvokerHelper
  * example, the last two lines of the 'curl' example above could be replaced
  * with the following:
  * <pre>
- * import org.apache.commons.cli.*
+ * import org.apache.commons.org.apache.commons.cli.*
  * ... as before ...
- * cli << new Option('q', false, 'If used as the first parameter disables .curlrc')
- * cli << OptionBuilder.withLongOpt('url').hasArg().withArgName('URL').
+ * org.apache.commons.cli << new Option('q', false, 'If used as the first parameter disables .curlrc')
+ * org.apache.commons.cli << OptionBuilder.withLongOpt('url').hasArg().withArgName('URL').
  *                      withDescription('Set URL to work with').create()
  * ...
  * </pre>
@@ -172,7 +172,7 @@ import org.codehaus.groovy.runtime.InvokerHelper
 class CliBuilder {
 
     /**
-     * Usage summary displayed as the first line when <code>cli.usage()</code> is called.
+     * Usage summary displayed as the first line when <code>org.apache.commons.cli.usage()</code> is called.
      */
     String usage = 'groovy'
 
