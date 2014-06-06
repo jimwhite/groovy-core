@@ -14,14 +14,24 @@
  * limitations under the License.
  */
 
-dependencies {
-    compile rootProject
-    compile "commons-cli:commons-cli:$commonsCliVersion"
-    compile "net.sf.jopt-simple:jopt-simple:4.6"
-    compile('com.beust:jcommander:1.35')
-    testCompile project(':groovy-test')
+package groovy.cli;
 
-//    groovy rootProject
-//    testCompile rootProject.sourceSets.test.runtimeClasspath
-//    testCompile project(':groovy-cli')
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * Mark a field in a script as a command for automagic initialization.
+ * Note that this need not be a JCommander-specific value.  Instead the
+ * particular implementation expected depends on what base script you use.
+ *
+ * @author Jim White
+ */
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+public @interface Subcommand {
 }
