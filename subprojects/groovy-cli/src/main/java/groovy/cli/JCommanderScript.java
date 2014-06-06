@@ -21,7 +21,6 @@ import com.beust.jcommander.ParameterDescription;
 import com.beust.jcommander.ParameterException;
 
 import groovy.lang.MissingPropertyException;
-import groovy.lang.Script;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -35,7 +34,7 @@ import static org.codehaus.groovy.runtime.DefaultGroovyMethods.join;
  * @author Jim White
  */
 
-abstract public class JCommanderScript extends Script {
+abstract public class JCommanderScript extends AbstractCommandScript {
     /**
      * Name of the property that holds the JCommander for this script (i.e. 'scriptJCommander').
      */
@@ -61,31 +60,6 @@ abstract public class JCommanderScript extends Script {
         } catch (ParameterException pe) {
             return exitCode(handleParameterException(jc, args, pe));
         }
-    }
-
-    /**
-     * If the given code is numeric and non-zero, then return that from this process using System.exit.
-     * Non-numeric values (including null) are taken to be zero and returned as-is.
-     *
-     * @param code
-     * @return the given code
-     */
-    public Object exitCode(Object code) {
-        if (code instanceof Number) {
-            int codeValue = ((Number) code).intValue();
-            if (codeValue != 0) System.exit(codeValue);
-        }
-        return code;
-    }
-
-    /**
-     * Return the script arguments as an array of strings.
-     * The default implementation is to get the "args" property.
-     *
-     * @return the script arguments as an array of strings.
-     */
-    public String[] getScriptArguments() {
-        return (String[]) getProperty("args");
     }
 
     /**
@@ -196,18 +170,6 @@ abstract public class JCommanderScript extends Script {
                 }
             }
         }
-    }
-
-    /**
-     * Error messages that arise from command line processing call this.
-     * The default is to use the Script's println method (which will go to the
-     * 'out' binding, if any, and System.out otherwise).
-     * If you want to use System.err, a logger, or something, this is the thing to override.
-     *
-     * @param message
-     */
-    public void printErrorMessage(String message) {
-        println(message);
     }
 
     /**
