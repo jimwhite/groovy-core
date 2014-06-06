@@ -16,22 +16,15 @@
 
 package groovy.cli;
 
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.ParameterDescription;
-import com.beust.jcommander.ParameterException;
-import groovy.lang.MissingPropertyException;
 import groovy.util.CliBuilder;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.util.List;
 
 import static org.codehaus.groovy.runtime.DefaultGroovyMethods.join;
 
 /**
- * Base script that provides JCommander declarative (annotation-based) argument processing for scripts.
+ * Base script that provides CliBuilder declarative (annotation-based) argument processing for scripts.
  *
  * @author Jim White
  */
@@ -59,7 +52,9 @@ abstract public class CliBuilderScript extends AbstractCommandScript {
 //            runScriptCommand(jc);
 
             return exitCode(runScriptBody());
-        } catch (ParameterException pe) {
+        } catch (Exception pe) {
+            // TODO: JCommander used specific exceptions for bad parameter parses.  What's the right thing here?
+            // Probably don't really be catching all exceptions like this says for now.
             return exitCode(handleParameterException(jc, args, pe));
         }
     }
