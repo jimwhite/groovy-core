@@ -16,12 +16,16 @@
 
 dependencies {
     compile rootProject
+    groovy rootProject
+
     compile "commons-cli:commons-cli:$commonsCliVersion"
     compile "net.sf.jopt-simple:jopt-simple:4.6"
     compile('com.beust:jcommander:1.35')
     testCompile project(':groovy-test')
 
-//    groovy rootProject
 //    testCompile rootProject.sourceSets.test.runtimeClasspath
 //    testCompile project(':groovy-cli')
 }
+
+sourceSets.main.java.srcDirs = []
+sourceSets.main.groovy.srcDirs += ["src/main/java"]
